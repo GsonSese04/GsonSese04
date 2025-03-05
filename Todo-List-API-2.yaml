@@ -137,6 +137,8 @@ paths:
       description: Delete and remove user from database
       security:
         - API Key - 1: []
+      tags: 
+        - User
   /user/me/avatar:
     post:
       summary: Upload Image
