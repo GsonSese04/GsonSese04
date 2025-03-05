@@ -174,9 +174,7 @@ paths:
                 value:
                   avatar: string
                   name: string
-      parameters:
-        - schema: {}
-          in: header
+      parameters: []
     delete:
       summary: Delete Image
       operationId: delete-user-me-avatar
