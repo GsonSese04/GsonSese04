@@ -15,7 +15,7 @@ servers:
 paths:
   /user/register:
     post:
-      summary: ''
+      summary: Register User
       operationId: post-user-register
       responses:
         '201':
@@ -107,7 +107,7 @@ paths:
       security:
         - API Key - 1: []
     put:
-      summary: ''
+      summary: Update User Profile
       operationId: put-user-me
       responses:
         '200':
@@ -129,7 +129,7 @@ paths:
                   age: 20
         description: ''
     delete:
-      summary: ''
+      summary: Delete User
       operationId: delete-user-me
       responses:
         '200':
@@ -169,7 +169,7 @@ paths:
         - schema: {}
           in: header
     delete:
-      summary: ''
+      summary: Delete Image
       operationId: delete-user-me-avatar
       responses:
         '200':
