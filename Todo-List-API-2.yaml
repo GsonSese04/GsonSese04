@@ -128,6 +128,8 @@ paths:
                 value:
                   age: 20
         description: ''
+      tags: 
+        - User
     delete:
       summary: Delete User
       operationId: delete-user-me
