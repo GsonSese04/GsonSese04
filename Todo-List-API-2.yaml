@@ -45,7 +45,7 @@ paths:
                   type: integer
                   x-stoplight:
                     id: vordvt9fyn199
-        description: ''
+        description: 'provide name, mail, password and integer'
       tags:
         - User
       security: []
@@ -128,7 +128,7 @@ paths:
                 value:
                   age: 20
         description: ''
-      tags: 
+      tags:
         - User
     delete:
       summary: Delete User
@@ -139,7 +139,7 @@ paths:
       description: Delete and remove user from database
       security:
         - API Key - 1: []
-      tags: 
+      tags:
         - User
   /user/me/avatar:
     post:
@@ -165,10 +165,15 @@ paths:
                   x-stoplight:
                     id: 00ax0bqneya7m
                   format: binary
+                name:
+                  type: string
+                  x-stoplight:
+                    id: mnh3fv9o53d04
             examples:
               Example 1:
                 value:
                   avatar: string
+                  name: string
       parameters:
         - schema: {}
           in: header
