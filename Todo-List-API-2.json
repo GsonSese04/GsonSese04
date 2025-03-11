@@ -1,0 +1,292 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "479ee8b0r571z"
+  },
+  "info": {
+    "title": "Todo List API",
+    "version": "1.0",
+    "description": "Todo List API with user authentication, CRUD and sending email functionality",
+    "contact": {
+      "name": "Gson",
+      "url": "Gson.con",
+      "email": "gson@gson.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-nodejs-todolist.herokuapp.com",
+      "description": "prod"
+    },
+    {
+      "url": "",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/user/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "post-user-login",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Log in to registered user account",
+        "parameters": [],
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "y4r2h6pbnlno1"
+                    },
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "jc5s2ihcwy65y"
+                    },
+                    "format": "password"
+                  }
+                }
+              },
+              "examples": {
+                "Example Request": {
+                  "value": {
+                    "email": "user@example.com",
+                    "password": "pa$$word"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/logout": {
+      "post": {
+        "summary": "Logout",
+        "operationId": "post-user-logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "API Key - 1": []
+          }
+        ],
+        "description": "log out the user and clear token from database"
+      }
+    },
+    "/user/me": {
+      "get": {
+        "summary": "Get Logged In User Via Token",
+        "operationId": "get-user-me",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "description": "Fetch user profile that logged in, authorization needed",
+        "security": [
+          {
+            "API Key - 1": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update User Profile",
+        "operationId": "put-user-me",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "update logged in user profile and save it to database",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "age": {
+                    "type": "integer",
+                    "x-stoplight": {
+                      "id": "pg6jqsftu0cbm"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "age": 20
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "summary": "Delete User",
+        "operationId": "delete-user-me",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Delete and remove user from database",
+        "security": [
+          {
+            "API Key - 1": []
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/user/me/avatar": {
+      "post": {
+        "summary": "Upload Image",
+        "operationId": "post-user-me-avatar",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "description": "Get user image that has been uploaded",
+        "security": [
+          {
+            "API Key - 1": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "format": "binary",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "00ax0bqneya7m"
+                    },
+                    "format": "binary"
+                  },
+                  "name": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "mnh3fv9o53d04"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "avatar": "string",
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": []
+      },
+      "delete": {
+        "summary": "Delete Image",
+        "operationId": "delete-user-me-avatar",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Delete user image from database",
+        "security": [
+          {
+            "API Key - 1": []
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/user/{userId}/avatar": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "id of the user"
+        }
+      ],
+      "get": {
+        "summary": "Get User Image",
+        "tags": [
+          "User"
+        ],
+        "responses": {},
+        "operationId": "get-user-userId-avatar",
+        "description": "Get user image that has been uploaded",
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "API Key - 1": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": ""
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Task"
+    },
+    {
+      "name": "User"
+    }
+  ],
+  "security": [
+    {
+      "API Key - 1": []
+    }
+  ]
+}
